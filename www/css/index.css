@@ -1,0 +1,18 @@
+.navbar-inverse {
+    background-color: #2a2a2a;
+    border-color: #080808;
+}
+
+h1{
+	color: #fe8900;
+}
+
+a{
+	color: #fe8900;
+}
+
+em{
+	font-style: normal;
+	color: #ff0000;
+	font-weight: bold;
+}
