@@ -4,8 +4,6 @@ session_start();
 
 include 'ip.php';
 
-//include 'db.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +49,7 @@ include 'ip.php';
       <div class="starter-template">
 
         <img src="images/logoxs.png" alt="Descubra Seu IP, por XS Informática" titla="Descubra Seu IP, por XS Informática">
-        <h1 title="Descubra Seu IP, por XS Informática">Sobre o Descubra Seu IP, por XS Informática</h1>
+        <h1 title="Descubra Seu IP, por XS Informática">Sobre o Descubra Seu IP, <br>por XS Informática</h1>
         <span class="lead">
           <p>
             <strong>O seu IP é:</strong> <em><?php echo $ip;?></em>

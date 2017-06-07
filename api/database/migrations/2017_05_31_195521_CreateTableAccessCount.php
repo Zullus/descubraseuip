@@ -13,7 +13,7 @@ class CreateTableAccessCount extends Migration
      */
     public function up()
     {
-        Schema::create('accesscount', function(Blueprint $table)
+        Schema::create('access_counts', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('ip');
@@ -30,6 +30,6 @@ class CreateTableAccessCount extends Migration
      */
     public function down()
     {
-        Schema::drop('accesscount');
+        Schema::drop('access_counts');
     }
 }

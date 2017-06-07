@@ -5,6 +5,7 @@
 
 h1{
 	color: #fe8900;
+    font-size: 2em !important;
 }
 
 a{
@@ -15,4 +16,21 @@ em{
 	font-style: normal;
 	color: #ff0000;
 	font-weight: bold;
+}
+
+@media only screen and (max-width : 360px) {
+
+    .starter-template{
+        text-align: center !important;
+    }
+
+}
+
+@media only screen and (max-width : 320px) {
+
+    h1{
+        color: #fe8900;
+        font-size: 1.5em !important;
+    }
+
 }

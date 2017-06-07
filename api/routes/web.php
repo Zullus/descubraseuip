@@ -11,10 +11,15 @@
 |
 */
 
-$app->get('/', function () use ($app) {
+/*$app->get('/', function () use ($app) {
     return $app->version();
-});
+});*/
 
 $app->get('ip', [
-    'as' => 'ipi', 'uses' => 'IPController@index'
+    'as' => 'ip', 'uses' => 'IPController@index'
 ]);
+
+$app->post('/', [
+    'as' => 'ipi', 'uses' => 'AccessLogController@index'
+]);
+

@@ -13,12 +13,12 @@ class CreateTableAccessLog extends Migration
      */
     public function up()
     {
-        Schema::create('accesslog', function(Blueprint $table)
+        Schema::create('access_logs', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('ip');
             $table->string('reverseip');
-            $table->string('asseccform');
+            $table->string('accessform');
             $table->string('useragent');
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +32,6 @@ class CreateTableAccessLog extends Migration
      */
     public function down()
     {
-        Schema::drop('accesslog');
+        Schema::drop('access_logs');
     }
 }

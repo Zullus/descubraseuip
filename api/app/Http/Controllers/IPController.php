@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\AccessCountController as AccessCountController;
+
 class IPController extends Controller
 {
     /**
@@ -9,6 +11,13 @@ class IPController extends Controller
      *
      * @return void
      */
+    protected $AccessCountController;
+
+    function __construct(AccessCountController $AccessCountController)
+    {
+        $this->AccessCountController = $AccessCountController;
+    }
+
     private function getIP()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -20,26 +29,63 @@ class IPController extends Controller
 
     private function getHostname($ip){
 
-    	if($ip == ''){
+        if($ip == ''){
 
-    		$ip = $this->getIP();
-    	}
+            $ip = $this->getIP();
+        }
 
-    	$hostname = gethostbyaddr($ip);
+        $hostname = gethostbyaddr($ip);
 
-    	return $hostname;
+        return $hostname;
     }
 
-    public function index(){
+    private function exitmsg($count){
+        if($count == 1){
 
-    	$ip = $this->getIP();
+            $msg = 'Esse IP foi verificado uma vez';
 
-    	$hostname = $this->getHostname($ip);
+        }
+        else{
 
-    	$saida = array('ip' => $ip, 'ip_reverso' => $hostname);
+            $msg = 'Esse ip já foi verificado ' . $count . ' vezes';
+        }
 
-    	$saida = json_encode($saida);
+        return $msg;
+    }
 
-    	echo $saida;
+    public function arrayforexit($ip, $hostname, $acceessMsg, $err = ''){
+
+        $saida = array(
+                        'ip' => $ip,
+                        'ip_reverso' => $hostname,
+                        'acessos' => $acceessMsg,
+                        'erro' => $err,
+                        'agradecimento' => 'Obriagdos por usar o Meu IP XS Informática'
+                        );
+
+        return $saida;
+    }
+
+    public function index($ip = '', $hostname = ''){
+
+        if($ip == ''){
+
+            $ip = $this->getIP();
+
+        }
+
+        if($hostname == ''){
+
+            $hostname = $this->getHostname($ip);
+
+        }
+
+        $count = $this->AccessCountController->conunt($ip);
+
+        $acceessMsg = $this->exitmsg($count);
+
+        $saida = $this->arrayforexit($ip, $hostname, $acceessMsg);
+
+        return $saida;
     }
 }
