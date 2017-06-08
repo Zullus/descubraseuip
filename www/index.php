@@ -2,6 +2,8 @@
 
 session_start();
 
+include '.env.php';
+
 include 'ip.php';
 
 ?>

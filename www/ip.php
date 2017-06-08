@@ -13,7 +13,7 @@ $data_post = array('ip' => $ip, 'hostname' => $hostname, 'useragent' => $browser
 //$data_post = array();
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'http://meuip.php7/api/');
+curl_setopt($ch, CURLOPT_URL, HOSTAPI);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_post);
 //curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
